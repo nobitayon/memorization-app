@@ -17,7 +17,7 @@ func main() {
 	router := gin.Default()
 	router.GET("/api/account", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
-			"hello": "suck",
+			"hello": "nice",
 		})
 	})
 	srv := &http.Server{
