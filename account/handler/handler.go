@@ -5,16 +5,22 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
+	"github.com/nobitayon/memorization-app/handler/model"
 )
 
-type Handler struct{}
+type Handler struct {
+	UserService model.UserService
+}
 
 type Config struct {
-	R *gin.Engine
+	R           *gin.Engine
+	UserService model.UserService
 }
 
 func NewHandler(c *Config) {
-	h := &Handler{}
+	h := &Handler{
+		UserService: c.UserService,
+	}
 	g := c.R.Group(os.Getenv("ACCOUNT_API_URL"))
 	g.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
@@ -30,13 +36,6 @@ func NewHandler(c *Config) {
 	g.POST("/image", h.Image)
 	g.DELETE("/image", h.DeleteImage)
 	g.PUT("/details", h.Details)
-}
-
-// user detail
-func (h *Handler) Me(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{
-		"Hello": "it's me",
-	})
 }
 
 func (h *Handler) Signup(c *gin.Context) {

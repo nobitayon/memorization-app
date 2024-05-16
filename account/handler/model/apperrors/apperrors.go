@@ -1,4 +1,4 @@
-package model
+package apperrors
 
 import (
 	"errors"
@@ -75,7 +75,7 @@ func NewConflict(name string, value string) *Error {
 	}
 }
 
-func NewInternal(name string, value string) *Error {
+func NewInternal() *Error {
 	return &Error{
 		Type:    Internal,
 		Message: "internal server error",

@@ -1,13 +1,17 @@
 package model
 
-import "github.com/google/uuid"
+import (
+	"context"
+
+	"github.com/google/uuid"
+)
 
 // UserService defines methods the handler layer
 // expects any service t interacts with to implement
 type UserService interface {
-	Get(uid uuid.UUID) (*User, error)
+	Get(ctx context.Context, uid uuid.UUID) (*User, error)
 }
 
 type UserRepository interface {
-	FindByID(uid uuid.UUID) (*User, error)
+	FindByID(ctx context.Context, uid uuid.UUID) (*User, error)
 }
