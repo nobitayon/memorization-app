@@ -179,8 +179,8 @@ func TestSignup(t *testing.T) {
 			Password: "ValidPassword123",
 		}
 		mockTokenResp := &model.TokenPair{
-			IDToken: "idToken",
-			Refresh: "refreshToken",
+			IDToken:      "idToken",
+			RefreshToken: "refreshToken",
 		}
 
 		mockUserService := new(mocks.MockUserService)
