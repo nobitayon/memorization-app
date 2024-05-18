@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"log"
 
 	"github.com/google/uuid"
 	"github.com/nobitayon/memorization-app/account/handler/model"
@@ -27,5 +28,18 @@ func (s *UserService) Get(ctx context.Context, uid uuid.UUID) (*model.User, erro
 }
 
 func (s *UserService) Signup(ctx context.Context, u *model.User) error {
-	panic("Method not implemented")
+	pw, err := hashPassword(u.Password)
+	if err != nil {
+		log.Printf("unable to signup for email: %v\n", u.Email)
+	}
+
+	// unnatural to mutate password here
+	// better the function signature (ctx, email, password)
+	// create struct user
+	u.Password = pw
+
+	if err := s.UserRepository.Create(ctx, u); err != nil {
+		return err
+	}
+	return nil
 }

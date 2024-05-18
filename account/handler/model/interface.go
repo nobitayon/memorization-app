@@ -19,4 +19,5 @@ type TokenService interface {
 
 type UserRepository interface {
 	FindByID(ctx context.Context, uid uuid.UUID) (*User, error)
+	Create(ctx context.Context, u *User) error
 }
