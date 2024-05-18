@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/google/uuid"
-	"github.com/nobitayon/memorization-app/handler/model"
+	"github.com/nobitayon/memorization-app/account/handler/model"
 	"github.com/stretchr/testify/mock"
 )
 

@@ -6,8 +6,8 @@ import (
 	"testing"
 
 	"github.com/google/uuid"
-	"github.com/nobitayon/memorization-app/handler/model"
-	"github.com/nobitayon/memorization-app/handler/model/mocks"
+	"github.com/nobitayon/memorization-app/account/handler/model"
+	"github.com/nobitayon/memorization-app/account/handler/model/mocks"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 )

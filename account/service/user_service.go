@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/google/uuid"
-	"github.com/nobitayon/memorization-app/handler/model"
+	"github.com/nobitayon/memorization-app/account/handler/model"
 )
 
 type UserService struct {
@@ -24,4 +24,8 @@ func NewUserService(c *USConfig) model.UserService {
 func (s *UserService) Get(ctx context.Context, uid uuid.UUID) (*model.User, error) {
 	u, err := s.UserRepository.FindByID(ctx, uid)
 	return u, err
+}
+
+func (s *UserService) Signup(ctx context.Context, u *model.User) error {
+	panic("Method not implemented")
 }

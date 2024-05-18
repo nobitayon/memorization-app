@@ -5,8 +5,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/nobitayon/memorization-app/handler/model"
-	"github.com/nobitayon/memorization-app/handler/model/apperrors"
+	"github.com/nobitayon/memorization-app/account/handler/model"
+	"github.com/nobitayon/memorization-app/account/handler/model/apperrors"
 )
 
 // user detail
