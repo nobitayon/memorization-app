@@ -28,7 +28,7 @@ func TestMe(t *testing.T) {
 		}
 
 		mockUserService := new(mocks.MockUserService)
-		mockUserService.On("Get", mock.AnythingOfType("*gin.Context"), uid).Return(mockUserResp, nil)
+		mockUserService.On("Get", mock.AnythingOfType("context.backgroundCtx"), uid).Return(mockUserResp, nil)
 
 		rr := httptest.NewRecorder()
 

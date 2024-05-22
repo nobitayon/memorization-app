@@ -20,7 +20,7 @@ func TestSignup(t *testing.T) {
 
 	t.Run("Email and Password Required", func(t *testing.T) {
 		mockUserService := new(mocks.MockUserService)
-		mockUserService.On("Signup", mock.AnythingOfType("*gin.Context"), mock.AnythingOfType("*model.User")).Return(nil)
+		mockUserService.On("Signup", mock.AnythingOfType("context.backgroundCtx"), mock.AnythingOfType("*model.User")).Return(nil)
 
 		rr := httptest.NewRecorder()
 
@@ -49,7 +49,7 @@ func TestSignup(t *testing.T) {
 
 	t.Run("invalid email", func(t *testing.T) {
 		mockUserService := new(mocks.MockUserService)
-		mockUserService.On("Signup", mock.AnythingOfType("*gin.Context"), mock.AnythingOfType("*model.User")).Return(nil)
+		mockUserService.On("Signup", mock.AnythingOfType("context.backgroundCtx"), mock.AnythingOfType("*model.User")).Return(nil)
 
 		rr := httptest.NewRecorder()
 
@@ -79,7 +79,7 @@ func TestSignup(t *testing.T) {
 
 	t.Run("password too short", func(t *testing.T) {
 		mockUserService := new(mocks.MockUserService)
-		mockUserService.On("Signup", mock.AnythingOfType("*gin.Context"), mock.AnythingOfType("*model.User")).Return(nil)
+		mockUserService.On("Signup", mock.AnythingOfType("context.backgroundCtx"), mock.AnythingOfType("*model.User")).Return(nil)
 
 		rr := httptest.NewRecorder()
 
@@ -109,7 +109,7 @@ func TestSignup(t *testing.T) {
 
 	t.Run("password too long", func(t *testing.T) {
 		mockUserService := new(mocks.MockUserService)
-		mockUserService.On("Signup", mock.AnythingOfType("*gin.Context"), mock.AnythingOfType("*model.User")).Return(nil)
+		mockUserService.On("Signup", mock.AnythingOfType("context.backgroundCtx"), mock.AnythingOfType("*model.User")).Return(nil)
 
 		rr := httptest.NewRecorder()
 
@@ -143,7 +143,7 @@ func TestSignup(t *testing.T) {
 			Password: "avalidpassword123",
 		}
 		mockUserService := new(mocks.MockUserService)
-		mockUserService.On("Signup", mock.AnythingOfType("*gin.Context"), mock.AnythingOfType("*model.User")).Return(
+		mockUserService.On("Signup", mock.AnythingOfType("context.backgroundCtx"), mock.AnythingOfType("*model.User")).Return(
 			apperrors.NewConflict("user already exists", u.Email),
 		)
 
@@ -187,11 +187,11 @@ func TestSignup(t *testing.T) {
 		mockTokenService := new(mocks.MockTokenService)
 
 		mockUserService.
-			On("Signup", mock.AnythingOfType("*gin.Context"), u).
+			On("Signup", mock.AnythingOfType("context.backgroundCtx"), u).
 			Return(nil)
 
 		mockTokenService.
-			On("NewPairFromUser", mock.AnythingOfType("*gin.Context"), u, "").
+			On("NewPairFromUser", mock.AnythingOfType("context.backgroundCtx"), u, "").
 			Return(mockTokenResp, nil)
 
 		rr := httptest.NewRecorder()
@@ -238,11 +238,11 @@ func TestSignup(t *testing.T) {
 		mockTokenService := new(mocks.MockTokenService)
 
 		mockUserService.
-			On("Signup", mock.AnythingOfType("*gin.Context"), u).
+			On("Signup", mock.AnythingOfType("context.backgroundCtx"), u).
 			Return(nil)
 
 		mockTokenService.
-			On("NewPairFromUser", mock.AnythingOfType("*gin.Context"), u, "").
+			On("NewPairFromUser", mock.AnythingOfType("context.backgroundCtx"), u, "").
 			Return(nil, mockErrorResponse)
 
 		rr := httptest.NewRecorder()
